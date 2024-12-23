@@ -1,5 +1,19 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+# Customizable Chatbot Component
+
+A modern, responsive React chatbot component that integrates with Google's Gemini 1.5 Flash AI model. This component provides a customizable chat interface that can be easily embedded into any React/Next.js application.
+
+## Features
+
+- 🎯 Plug-and-play chat interface
+- 💬 Real-time AI responses using Gemini 1.5 Flash
+- 🎨 Clean and modern UI with Tailwind CSS
+- 📱 Fully responsive design
+- 🔄 Loading states and error handling
+- 🎭 Customizable bot personality/context
+- 👆 Expandable/collapsible chat window
+
 ## Getting Started
 
 First, run the development server:
@@ -18,19 +32,76 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## Installation
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm install chatbot-customized
+# or
+yarn add chatbot-customized
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Security Best Practices
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+⚠️ **Important**: Never expose your API key directly in your code. Always use environment variables.
 
-## Deploy on Vercel
+1. Create a `.env` file in your project root:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+NEXT_PUBLIC_GEMINI_API_KEY=your-api-key-here
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. Add `.env` to your `.gitignore`:
+
+```bash
+echo ".env" >> .gitignore
+```
+
+## Usage
+
+```jsx
+import TryYourChatbot from 'chatbot-customized/components/TryYourChatbot';
+
+function App() {
+  return (
+    <TryYourChatbot
+      apiKey={process.env.NEXT_PUBLIC_GEMINI_API_KEY}
+      description="Your custom bot description/personality"
+    />
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `apiKey` | string | Your Google Gemini API key |
+| `description` | string | Context/personality description for the chatbot |
+
+## Requirements
+
+- React 16.8+ (Hooks support)
+- Google Gemini API key
+- Tailwind CSS (for styling)
+
+## Features in Detail
+
+### Chat Interface
+- Floating action button to open/close chat
+- Message history with user/bot distinction
+- Input field with loading states
+- Responsive design that works on all devices
+
+### Message Handling
+- Real-time message sending and receiving
+- Loading states during API calls
+- Message history preservation
+- Input validation and error handling
+
+### Styling
+- Modern UI with Tailwind CSS
+- Customizable colors and themes
+- Responsive layout
+- Smooth animations and transitions
+
