@@ -2,8 +2,9 @@
 
 import TryYourChatbot from "@/components/TryYourChatbot";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function Chatbot() {
+function ChatbotContent() {
   const searchParams = useSearchParams();
   const apiKey = searchParams.get('apiKey') || '';
   const description = searchParams.get('description') || '';
@@ -13,5 +14,13 @@ export default function Chatbot() {
       <h1 className="text-white text-5xl mb-4">Try Your Chat Bot</h1>
       <TryYourChatbot apiKey={apiKey} description={description} />
     </div>
+  );
+}
+
+export default function Chatbot() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ChatbotContent />
+    </Suspense>
   );
 }
